@@ -99,6 +99,72 @@ paths:
               type: string
       security:
         - apikeyQuery: []
+    /api/GetTopRedditPostByChannel:
+    get:
+      operationId:  GetTopRedditPostByChannel
+      description:  Returns specified top count posts from specified channel
+      summary:      Get top reddit posts by channel
+      x-ms-summary: Get top reddit posts by channel
+      produces:
+        - application/json
+      consumes: []
+      parameters:
+        - name:     channel
+          in:       query
+          required: false
+          type:     string
+          description:     Filter results to posts with the specified channel
+          x-ms-summary:    Reddit channel
+          x-ms-visibility: important
+        - name:     count
+          in:       query
+          required: false
+          type:     string
+          description:     Number of latest posts to be returned from channel
+          x-ms-summary:    Count
+          x-ms-visibility: important
+      responses:
+        '200':
+          description:  Details of of the latest Reddit posts
+          x-ms-summary: List of reddit posts
+          schema:
+           type: object
+           properties:
+            Name:
+              x-ms-summary: Name
+              description:  The name of the post
+              type:   string
+              format: string
+            UPS:
+              x-ms-summary: UPS
+              description:  The ups of the post
+              type: string
+            NumComments:
+              x-ms-summary: NumComments
+              description:  Number of comments for the specific post
+              type: integer
+            Author:
+              x-ms-summary: Author
+              description:  The author of the post
+              type: string
+            Flair:
+              x-ms-summary: Flair
+              description:  The type of the post
+              type: string
+            Created:
+              x-ms-summary: Created
+              description:  The date the post was created
+              type: date-time
+            Title:
+              x-ms-summary: Title
+              description:  The title of the post
+              type: string
+            Url:
+              x-ms-summary: Url
+              description:  A link to the post
+              type: string
+      security:
+        - apikeyQuery: []
 definitions: {}
 securityDefinitions:
   apikeyQuery:
