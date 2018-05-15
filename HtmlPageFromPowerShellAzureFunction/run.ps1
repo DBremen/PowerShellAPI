@@ -90,8 +90,8 @@ Function Out-DataTableView {
 
 
 
-$req_query_channel = 'powershell'
-$req_query_count = 5
+#$req_query_channel = 'powershell'
+#$req_query_count = 5
 if ($req_query_channel -and $req_query_count){
     $name = $req_query_channel
     $count = $req_query_count
@@ -118,6 +118,6 @@ if ($req_query_channel -and $req_query_count){
     @{
     headers = @{ "content-type" = "text/html" }
     body    = $html
-    } | ConvertTo-Json > $res
+    } | ConvertTo-Json -Depth 5 > $res
 
 }
