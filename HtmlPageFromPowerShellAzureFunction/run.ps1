@@ -93,7 +93,7 @@ Function Out-DataTableView {
 #$req_query_channel = 'powershell'
 #$req_query_count = 5
 if ($req_query_channel -and $req_query_count){
-    $name = $req_query_channel
+    $channel = $req_query_channel
     $count = $req_query_count
     $rawPosts = (Invoke-RestMethod "https://www.reddit.com/r/$channel.json?limit=100" -Verbose).data.children.data
     $redditPosts = foreach ($post in $rawPosts){
