@@ -1,10 +1,4 @@
-# for pester tes
-
-$req_query_channel = 'powershell'
-$req_query_count = 5
-$res = "$env:TEMP\test.txt"
-
-
+# for pester test
 if ($args.Count -eq 3){
     $req_query_channel, $req_query_count, $res = $args
 }
