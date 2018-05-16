@@ -1,7 +1,18 @@
+# for pester tes
+
+$req_query_channel = 'powershell'
+$req_query_count = 5
+$res = "$env:TEMP\test.txt"
+
+
+if ($args.Count -eq 3){
+    $req_query_channel, $req_query_count, $res = $args
+}
+
 if ($req_query_channel -and $req_query_count){
     $channel = $req_query_channel
     $count = $req_query_count
-    $rawPosts = (Invoke-RestMethod "https://www.reddit.com/r/$channel.json?limit=100" -Verbose).data.children.data
+    $rawPosts = (Invoke-RestMethod "https://www.reddit.com/r/$channel.json?limit=100").data.children.data
     $redditPosts = foreach ($post in $rawPosts){
         [PSCustomObject]@{
             Name        = $post.Name
